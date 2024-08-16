@@ -3,13 +3,15 @@ import Home from './pages/Home';
 import EventDetail from './pages/EventDetail';
 import CreateEvent from './pages/CreateEvent';
 import Favorites from './pages/Favorites';
-import Navbar from './components/Navbar'; // Navbar bileşenini içe aktar
+import Navbar from './components/Navbar'; 
+import Footer from './components/Footer';
+
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className='flex flex-col min-h-screen'>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -17,8 +19,10 @@ function App() {
           <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
+        <Footer/> 
       </div>
     </Router>
+    
   );
 }
 
