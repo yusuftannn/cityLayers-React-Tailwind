@@ -1,13 +1,36 @@
 // src/components/Navbar.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa'; // Sepet ikonu
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa'; 
 import { useFavorites } from '../context/FavoritesContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { favorites, removeFromFavorites } = useFavorites();
+  const { favorites, removeFromFavorites, clearFavorites } = useFavorites();
+  const location = useLocation();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Eğer tıklanan yer dropdown değilse, dropdown'u kapat
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    // Belgeye tıklama olayını ekle
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Temizlik fonksiyonu: bileşen unmount olduğunda olay dinleyiciyi kaldır
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  useEffect(() => {
+    setIsDropdownOpen(false);
+  }, [location]);
 
   return (
     <nav className="bg-gray-800 p-4 w-full ">
@@ -25,8 +48,7 @@ const Navbar = () => {
           <Link to="/create-event" className="text-gray-300 hover:text-white">
             Yeni Etkinlik Oluştur
           </Link>
-          {/* Dropdown Sepet */}
-          <div className="relative z-50">
+          <div className="relative z-50" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="flex items-center text-gray-300 hover:text-white"
@@ -53,13 +75,19 @@ const Navbar = () => {
                     ))}
                   </ul>
                 )}
-                <div className="px-4 py-2">
+                <div className="px-4 py-2 flex justify-between space-x-2">
                   <Link
                     to="/favorites"
                     className="text-blue-500 hover:text-blue-700 text-sm"
                   >
                     Favorileri Görüntüle
                   </Link>
+                  <button
+                    onClick={clearFavorites}
+                    className="text-red-600 hover:text-red-800 text-sm"
+                  >
+                    Tümünü Kaldır
+                  </button>
                 </div>
               </div>
             )}

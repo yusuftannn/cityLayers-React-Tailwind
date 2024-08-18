@@ -11,7 +11,13 @@ export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
   const addToFavorites = (city) => {
-    setFavorites((prevFavorites) => [...prevFavorites, city]);
+    setFavorites((prevFavorites) => {
+      const isAlreadyFavorite = prevFavorites.some(favCity => favCity.name === city.name);
+      if (!isAlreadyFavorite) {
+        return [...prevFavorites, city];
+      }
+      return prevFavorites;
+    });
   };
 
   const removeFromFavorites = (name) => {
@@ -20,8 +26,13 @@ export const FavoritesProvider = ({ children }) => {
     );
   };
 
+  // Tüm favorileri kaldır
+  const clearFavorites = () => {
+    setFavorites([]);
+  };
+
   return (
-    <FavoritesContext.Provider value={{ favorites, addToFavorites, removeFromFavorites }}>
+    <FavoritesContext.Provider value={{ favorites, addToFavorites, removeFromFavorites, clearFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );
