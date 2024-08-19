@@ -1,4 +1,3 @@
-// src/context/FavoritesContext.jsx
 import React, { createContext, useContext, useState } from 'react';
 
 const FavoritesContext = createContext();
@@ -20,19 +19,22 @@ export const FavoritesProvider = ({ children }) => {
     });
   };
 
+  const seeInDetail = (city, navigate) => {
+    navigate(`/city-details/${city.name.toLowerCase()}`);
+  };
+
   const removeFromFavorites = (name) => {
     setFavorites((prevFavorites) =>
       prevFavorites.filter((city) => city.name !== name)
     );
   };
 
-  // Tüm favorileri kaldır
   const clearFavorites = () => {
     setFavorites([]);
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addToFavorites, removeFromFavorites, clearFavorites }}>
+    <FavoritesContext.Provider value={{ favorites, addToFavorites, seeInDetail, removeFromFavorites, clearFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );

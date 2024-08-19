@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="relative">
       {favorites.length === 0 ? (
-        <p className="px-4 py-2 text-sm text-gray-500">Sepet boş</p>
+        <p className="px-4 py-2 text-sm text-gray-500">Favorilediğiniz Şehir Bulunmamaktadır.</p>
       ) : (
         <table className="min-w-full bg-white border border-gray-200 rounded-md shadow-md">
           <thead>

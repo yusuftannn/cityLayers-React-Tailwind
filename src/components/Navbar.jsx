@@ -1,7 +1,6 @@
-// src/components/Navbar.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa'; 
+import { FaHeart } from 'react-icons/fa';
 import { useFavorites } from '../context/FavoritesContext';
 
 const Navbar = () => {
@@ -13,16 +12,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Eğer tıklanan yer dropdown değilse, dropdown'u kapat
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
       }
     };
 
-    // Belgeye tıklama olayını ekle
     document.addEventListener('mousedown', handleClickOutside);
 
-    // Temizlik fonksiyonu: bileşen unmount olduğunda olay dinleyiciyi kaldır
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -33,7 +29,7 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className="bg-gray-800 p-4 w-full ">
+    <nav className="bg-gray-800 p-4 w-full">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-lg font-semibold">
           <Link to="/">City Layers</Link>
@@ -53,13 +49,13 @@ const Navbar = () => {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="flex items-center text-gray-300 hover:text-white"
             >
-              <FaShoppingCart className="h-6 w-6" />
-              <span className="ml-2">Sepet ({favorites.length})</span>
+              <FaHeart className="h-3 w-3" />
+              <span className="ml-2"> ({favorites.length})</span>
             </button>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-50">
                 {favorites.length === 0 ? (
-                  <p className="px-4 py-2 text-sm text-gray-500">Sepet boş</p>
+                  <p className="px-4 py-2 text-sm text-gray-500">Favoriler Boş</p>
                 ) : (
                   <ul>
                     {favorites.map((city) => (

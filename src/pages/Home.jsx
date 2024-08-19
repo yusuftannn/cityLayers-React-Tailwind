@@ -1,13 +1,14 @@
-// src/pages/Home.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../assets/Home.css';
 import { cities } from '../data/cities';
 import { useFavorites } from '../context/FavoritesContext';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const { addToFavorites } = useFavorites();
+  const { addToFavorites, seeInDetail } = useFavorites();
+  const navigate = useNavigate();
 
   return (
     <div className="home-container z-40">
@@ -42,7 +43,10 @@ const Home = () => {
                   >
                     Listeye Ekle
                   </button>
-                  <button className="bg-green-500 text-white px-2 py-1 rounded">
+                  <button
+                    onClick={() => seeInDetail(city, navigate)}
+                    className="bg-green-500 text-white px-2 py-1 rounded"
+                  >
                     Detaylı Gör
                   </button>
                 </div>
