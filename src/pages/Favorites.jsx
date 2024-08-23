@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 
-const Home = () => {
+const Favorites = () => {
   const { favorites, removeFromFavorites } = useFavorites();
 
   return (
@@ -20,13 +20,13 @@ const Home = () => {
           </thead>
           <tbody>
             {favorites.map((city) => (
-              <tr key={city.name} className="border-b hover:bg-gray-50">
+              <tr key={city.id} className="border-b hover:bg-gray-50">
                 <td className="px-4 py-2">{city.name}</td>
                 <td className="px-4 py-2">{city.nüfus}</td>
                 <td className="px-4 py-2">{city.yüzölçümü}</td>
                 <td className="px-4 py-2 text-center">
                   <button
-                    onClick={() => removeFromFavorites(city.name)}
+                    onClick={() => removeFromFavorites(city.id)} 
                     className="text-red-600 hover:text-red-800 transition duration-200"
                   >
                     Kaldır
@@ -41,4 +41,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Favorites;

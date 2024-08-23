@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../assets/Home.css';
-import { cities } from '../data/cities';
 import { useFavorites } from '../context/FavoritesContext';
 import { useNavigate } from 'react-router-dom';
+import { fetchCities } from '../data/connection'; 
 
 const Home = () => {
-  const { addToFavorites, seeInDetail } = useFavorites();
+  const [cities, setCities] = useState([]);
+  const { addToFavorites } = useFavorites();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getCities = async () => {
+      const citiesData = await fetchCities(); 
+      setCities(citiesData);
+    };
+
+    getCities();
+  }, []);
+
+  const seeInDetail = (city) => {
+    navigate(`/city-details/${city.id}`);
+  };
 
   return (
     <div className="home-container z-40">
@@ -27,10 +41,7 @@ const Home = () => {
           />
 
           {cities.map((city) => (
-            <Marker
-              key={city.name}
-              position={[city.latitude, city.longitude]}
-            >
+            <Marker key={city.id} position={[city.latitude, city.longitude]}>
               <Popup>
                 <h2 className="text-lg font-semibold">{city.name}</h2>
                 <p><span className="font-bold text-red-600">Nüfus:</span> {city.nüfus}</p>
@@ -38,13 +49,13 @@ const Home = () => {
                 <p><span className="font-bold text-red-600">Bölge:</span> {city.bölge}</p>
                 <div className="flex justify-between mt-2">
                   <button
-                    onClick={() => addToFavorites(city)}
+                    onClick={() => addToFavorites(city.id)}
                     className="bg-blue-500 text-white px-2 py-1 rounded"
                   >
                     Listeye Ekle
                   </button>
                   <button
-                    onClick={() => seeInDetail(city, navigate)}
+                    onClick={() => seeInDetail(city)}
                     className="bg-green-500 text-white px-2 py-1 rounded"
                   >
                     Detaylı Gör

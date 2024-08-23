@@ -22,7 +22,7 @@ function App() {
             <Route path="/event/:id" element={<EventDetail />} />
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/city-details/:cityName" element={<CityDetailLoader />} />
+            <Route path="/city-details/:cityId" element={<CityDetailLoader />} />
           </Routes>
           <Footer />
         </div>

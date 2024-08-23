@@ -59,10 +59,10 @@ const Navbar = () => {
                 ) : (
                   <ul>
                     {favorites.map((city) => (
-                      <li key={city.name} className="px-4 py-2 border-b flex justify-between items-center">
+                      <li key={city.id} className="px-4 py-2 border-b flex justify-between items-center">
                         <span className="text-sm">{city.name}</span>
                         <button
-                          onClick={() => removeFromFavorites(city.name)}
+                          onClick={() => removeFromFavorites(city.id)}
                           className="text-red-600 text-sm"
                         >
                           Kaldır

@@ -1,34 +1,61 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { fetchCities } from '../data/connection';
+
 
 const FavoritesContext = createContext();
 
+// Favoriler hook'u
 export const useFavorites = () => {
   return useContext(FavoritesContext);
 };
 
+// Favoriler sağlayıcısı
 export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
+  const [cities, setCities] = useState([]);
 
-  const addToFavorites = (city) => {
-    setFavorites((prevFavorites) => {
-      const isAlreadyFavorite = prevFavorites.some(favCity => favCity.name === city.name);
-      if (!isAlreadyFavorite) {
-        return [...prevFavorites, city];
+  useEffect(() => {
+    const getCities = async () => {
+      try {
+        const citiesData = await fetchCities();
+        setCities(citiesData);
+      } catch (error) {
+        console.error('Error fetching cities:', error);
       }
-      return prevFavorites;
-    });
+    };
+
+    getCities();
+  }, []);
+
+  // Favorilere ekleme fonksiyonu
+  const addToFavorites = (cityId) => {
+    const city = cities.find((c) => c.id === cityId);
+    if (city) {
+      setFavorites((prevFavorites) => {
+        const isAlreadyFavorite = prevFavorites.some((favCity) => favCity.id === city.id);
+        if (!isAlreadyFavorite) {
+          return [...prevFavorites, city];
+        }
+        return prevFavorites;
+      });
+    }
+  };
+  
+
+  // Detay sayfasına yönlendirme fonksiyonu
+  const seeInDetail = (cityId, navigate) => {
+    navigate(`/city-details/${cityId}`);
   };
 
-  const seeInDetail = (city, navigate) => {
-    navigate(`/city-details/${city.name.toLowerCase()}`);
-  };
+ // Favorilerden çıkarma fonksiyonu
+const removeFromFavorites = (cityId) => {
+  setFavorites((prevFavorites) =>
+    prevFavorites.filter((city) => city.id !== cityId)
+  );
+};
 
-  const removeFromFavorites = (name) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((city) => city.name !== name)
-    );
-  };
 
+  // Tüm favorileri temizleme fonksiyonu
   const clearFavorites = () => {
     setFavorites([]);
   };
