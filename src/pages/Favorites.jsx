@@ -1,8 +1,11 @@
 import React from 'react';
 import { useFavorites } from '../context/FavoritesContext';
+import { useSeeInDetail } from '../utils/navigationHelpers';
+import Button from '../components/Buttons';
 
 const Favorites = () => {
   const { favorites, removeFromFavorites } = useFavorites();
+  const { seeInDetail } = useSeeInDetail();
 
   return (
     <div className="relative">
@@ -25,12 +28,18 @@ const Favorites = () => {
                 <td className="px-4 py-2">{city.nüfus}</td>
                 <td className="px-4 py-2">{city.yüzölçümü}</td>
                 <td className="px-4 py-2 text-center">
-                  <button
-                    onClick={() => removeFromFavorites(city.id)} 
-                    className="text-red-600 hover:text-red-800 transition duration-200"
-                  >
-                    Kaldır
-                  </button>
+                  <div className="flex gap-2 justify-center">
+                    <Button
+                      label="Kaldır"
+                      variant="remove"
+                      onClick={() => removeFromFavorites(city.id)}
+                    />
+                    <Button
+                      label="Detaylı Gör"
+                      variant="details"
+                      onClick={() => seeInDetail(city)}
+                    />
+                  </div>
                 </td>
               </tr>
             ))}

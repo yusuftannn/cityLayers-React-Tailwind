@@ -3,13 +3,13 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../assets/Home.css';
 import { useFavorites } from '../context/FavoritesContext';
-import { useNavigate } from 'react-router-dom';
+import { useSeeInDetail } from '../utils/navigationHelpers';
 import { fetchCities } from '../data/connection'; 
 
 const Home = () => {
   const [cities, setCities] = useState([]);
   const { addToFavorites } = useFavorites();
-  const navigate = useNavigate();
+  const { seeInDetail } = useSeeInDetail();
 
   useEffect(() => {
     const getCities = async () => {
@@ -19,10 +19,6 @@ const Home = () => {
 
     getCities();
   }, []);
-
-  const seeInDetail = (city) => {
-    navigate(`/city-details/${city.id}`);
-  };
 
   return (
     <div className="home-container z-40">

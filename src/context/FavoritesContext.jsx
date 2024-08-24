@@ -54,12 +54,12 @@ const removeFromFavorites = (cityId) => {
   );
 };
 
-
   // Tüm favorileri temizleme fonksiyonu
   const clearFavorites = () => {
     setFavorites([]);
   };
 
+  
   return (
     <FavoritesContext.Provider value={{ favorites, addToFavorites, seeInDetail, removeFromFavorites, clearFavorites }}>
       {children}

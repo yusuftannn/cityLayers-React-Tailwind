@@ -18,6 +18,7 @@
     "nüfus": "5.80 milyon",
     "yüzölçümü": "25,706 km²",
     "bölge": "İç Anadolu Bölgesi",
+    "aciklama": "Ankara, Türkiye'nin başkenti ve ikinci büyük şehridir. Modern Türkiye'nin kalbi olarak bilinen Ankara, tarihi ve politik önemiyle öne çıkar.",
     "link": "/city-details/2"
   },
   {
@@ -28,6 +29,7 @@
     "nüfus": "4.48 milyon",
     "yüzölçümü": "12,007 km²",
     "bölge": "Ege Bölgesi",
+    "aciklama": "İzmir, Türkiye'nin Ege Bölgesi'nde yer alan önemli bir liman şehridir. Tarihi zenginlikleri, kültürel yapısı ve modern yaşam tarzı ile bilinir.",
     "link": "/city-details/3"
   },
   {
@@ -38,6 +40,7 @@
     "nüfus": "3.21 milyon",
     "yüzölçümü": "10,882 km²",
     "bölge": "Marmara Bölgesi",
+    "aciklama": "Bursa, Osmanlı İmparatorluğu'nun ilk başkenti olarak tarihi bir öneme sahiptir. Yeşil doğası, termal suları ve sanayi gelişimi ile tanınır.",
     "link": "/city-details/4"
   },
   {
@@ -48,6 +51,7 @@
     "nüfus": "2.70 milyon",
     "yüzölçümü": "20,177 km²",
     "bölge": "Akdeniz Bölgesi",
+    "aciklama": "Antalya, Türkiye'nin en popüler turistik bölgelerinden biridir. Akdeniz kıyısındaki bu şehir, plajları, antik kalıntıları ve doğal güzellikleri ile ünlüdür.",
     "link": "/city-details/5"
   },
   {
@@ -58,6 +62,7 @@
     "nüfus": "2.32 milyon",
     "yüzölçümü": "38,257 km²",
     "bölge": "İç Anadolu Bölgesi",
+    "aciklama": "Konya, Türkiye'nin yüzölçümü bakımından en büyük ilidir ve Mevlana'nın şehri olarak bilinir. Tarihi zenginlikleri ve manevi değeri ile öne çıkar.",
     "link": "/city-details/6"
   },
   {
@@ -68,6 +73,7 @@
     "nüfus": "2.27 milyon",
     "yüzölçümü": "14,125 km²",
     "bölge": "Akdeniz Bölgesi",
+    "aciklama": "Adana, Türkiye'nin en büyük şehirlerinden biri olup, verimli tarım arazileri ve mutfağı ile ünlüdür. Ayrıca Seyhan Nehri şehrin merkezinden geçmektedir.",
     "link": "/city-details/7"
   },
   {
@@ -78,6 +84,7 @@
     "nüfus": "2.21 milyon",
     "yüzölçümü": "19,451 km²",
     "bölge": "Güneydoğu Anadolu Bölgesi",
+    "aciklama": "Şanlıurfa, tarih boyunca birçok medeniyete ev sahipliği yapmış bir şehirdir. Peygamberler şehri olarak bilinen Urfa, Balıklıgöl ve Göbeklitepe gibi tarihi mekanları ile ünlüdür.",
     "link": "/city-details/8"
   },
   {
@@ -88,6 +95,7 @@
     "nüfus": "2.16 milyon",
     "yüzölçümü": "6,887 km²",
     "bölge": "Güneydoğu Anadolu Bölgesi",
+    "aciklama": "Gaziantep, Türkiye'nin en önemli gastronomi şehirlerinden biridir. Zengin mutfak kültürü ve tarihi dokusu ile bilinir.",
     "link": "/city-details/9"
   },
   {
@@ -98,6 +106,7 @@
     "nüfus": "2.10 milyon",
     "yüzölçümü": "3,626 km²",
     "bölge": "Marmara Bölgesi",
+    "aciklama": "Kocaeli, Türkiye'nin sanayi başkentlerinden biridir. Marmara Bölgesi'nde yer alan bu şehir, İstanbul'a yakınlığı ve gelişmiş sanayi yapısıyla öne çıkar.",
     "link": "/city-details/10"
   }
 ]
