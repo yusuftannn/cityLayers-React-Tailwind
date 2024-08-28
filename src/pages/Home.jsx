@@ -22,9 +22,6 @@ const Home = () => {
 
   return (
     <div className="home-container z-40">
-      <header className="header bg-blue-600 p-4 text-center text-white font-bold text-xl">
-        Türkiye Haritası
-      </header>
       <div className="map-container">
         <MapContainer
           center={[39.9334, 32.8597]} // Türkiye'nin merkez koordinatları
@@ -48,13 +45,13 @@ const Home = () => {
                     onClick={() => addToFavorites(city.id)}
                     className="bg-blue-500 text-white px-2 py-1 rounded"
                   >
-                    Listeye Ekle
+                    Add to List
                   </button>
                   <button
                     onClick={() => seeInDetail(city)}
                     className="bg-green-500 text-white px-2 py-1 rounded"
                   >
-                    Detaylı Gör
+                    See Detail
                   </button>
                 </div>
               </Popup>

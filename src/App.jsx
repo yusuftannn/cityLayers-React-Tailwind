@@ -6,6 +6,9 @@ import CreateEvent from './pages/CreateEvent';
 import Favorites from './pages/Favorites';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import About from './pages/About-Us';
+import Contact from './pages/Contact';
+import EventCalendar from './components/EventCalendar';
 import CityDetailLoader from './data/CityDetailLoader'; 
 import { FavoritesProvider } from './context/FavoritesContext';
 
@@ -22,7 +25,10 @@ function App() {
             <Route path="/event/:id" element={<EventDetail />} />
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/about-us" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/city-details/:cityId" element={<CityDetailLoader />} />
+            <Route path="/eventform" element={<EventCalendar />} />
           </Routes>
           <Footer />
         </div>

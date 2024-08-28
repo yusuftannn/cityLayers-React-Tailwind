@@ -11,9 +11,10 @@ const Footer = () => {
             <p className="text-sm">© 2024 Yusuf TAN. All rights reserved.</p>
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white">About Us</a>
-            <a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white">Contact</a>
+          <a href="/" className="text-gray-400 hover:text-white">Home</a>
+            <a href="/about-us" className="text-gray-400 hover:text-white">About Us</a>
+            
+            <a href="/contact" className="text-gray-400 hover:text-white">Contact</a>
           </div>
         </div>
         <div className="mt-4 border-t border-gray-800 pt-4">

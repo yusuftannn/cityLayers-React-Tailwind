@@ -1,8 +1,9 @@
 import React from 'react';
 const Home = () => {
     return (
-      <div className="p-4">
-        <h1>Etkinlik Oluştur</h1>
+      <div>
+        <h1>Etkinliklerin Detayı</h1>
+        <p>Kullanıcının bulunduğu konuma göre öneriler burada gösterilecek.</p>
       </div>
     );
   };

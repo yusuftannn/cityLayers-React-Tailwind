@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ label, variant, onClick }) => {
+const Button = ({ label, variant, onClick, children }) => {
   const baseStyles = "px-2 py-1 font-semibold rounded transition-all duration-300 ease-in-out";
   
   const variantStyles = {
@@ -13,7 +13,7 @@ const Button = ({ label, variant, onClick }) => {
       className={`${baseStyles} ${variantStyles[variant]}`} 
       onClick={onClick}
     >
-      {label}
+      {children ? children : label}
     </button>
   );
 };

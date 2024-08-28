@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaRegTrashAlt     } from 'react-icons/fa';
 import { useFavorites } from '../context/FavoritesContext';
 
 const Navbar = () => {
@@ -36,13 +36,13 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex space-x-4 items-center">
           <Link to="/" className="text-gray-300 hover:text-white">
-            Ana Sayfa
+            Home
           </Link>
           <Link to="/favorites" className="text-gray-300 hover:text-white">
-            Favori Etkinlikler
+          Favorite Events
           </Link>
-          <Link to="/create-event" className="text-gray-300 hover:text-white">
-            Yeni Etkinlik Oluştur
+          <Link to="/eventform" className="text-gray-300 hover:text-white">
+          Create Event
           </Link>
           <div className="relative z-50" ref={dropdownRef}>
             <button
@@ -55,7 +55,7 @@ const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-50">
                 {favorites.length === 0 ? (
-                  <p className="px-4 py-2 text-sm text-gray-500">Favoriler Boş</p>
+                  <p className="px-4 py-2 text-sm text-gray-500">Favorites Empty</p>
                 ) : (
                   <ul>
                     {favorites.map((city) => (
@@ -65,7 +65,7 @@ const Navbar = () => {
                           onClick={() => removeFromFavorites(city.id)}
                           className="text-red-600 text-sm"
                         >
-                          Kaldır
+                          <FaRegTrashAlt className="h-3 w-4"  />
                         </button>
                       </li>
                     ))}
@@ -76,13 +76,13 @@ const Navbar = () => {
                     to="/favorites"
                     className="text-blue-500 hover:text-blue-700 text-sm"
                   >
-                    Favorileri Görüntüle
+                    View Favorites
                   </Link>
                   <button
                     onClick={clearFavorites}
                     className="text-red-600 hover:text-red-800 text-sm"
                   >
-                    Tümünü Kaldır
+                    Remove All
                   </button>
                 </div>
               </div>
@@ -116,13 +116,13 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="container mx-auto flex flex-col space-y-2 mt-4">
             <Link to="/" className="text-gray-300 hover:text-white">
-              Ana Sayfa
+              Home
             </Link>
             <Link to="/favorites" className="text-gray-300 hover:text-white">
-              Favori Etkinlikler
+            Favorite Events
             </Link>
-            <Link to="/create-event" className="text-gray-300 hover:text-white">
-              Yeni Etkinlik Oluştur
+            <Link to="/eventform" className="text-gray-300 hover:text-white">
+              Create Event
             </Link>
           </div>
         </div>
