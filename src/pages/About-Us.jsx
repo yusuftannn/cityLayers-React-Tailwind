@@ -1,6 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import useAnimatedCount from '../components/useAnimatedCount'; // Adjust the import path as needed
 
 const About = () => {
+  const rounded = useAnimatedCount(1, 100, 2);
+  const rounded2 = useAnimatedCount(1, 125532, 2);
+  const rounded3 = useAnimatedCount(1, 356, 2);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -15,13 +21,13 @@ const About = () => {
           <div className="flex-1">
             <h2 className="text-3xl font-semibold text-gray-800 mb-4">Our Mission</h2>
             <p className="text-gray-600">
-            Our mission is to provide comprehensive and accurate information to everyone who wants to explore the mysteries and beauties of cities around the world. We aim to be a reliable source of information for travelers.
+              Our mission is to provide comprehensive and accurate information to everyone who wants to explore the mysteries and beauties of cities around the world. We aim to be a reliable source of information for travelers.
             </p>
           </div>
           <div className="flex-1">
             <h2 className="text-3xl font-semibold text-gray-800 mb-4">Our Vision</h2>
             <p className="text-gray-600">
-            Our vision is to be one of the most visited travel platforms, enriching our users' experiences and making their discoveries unforgettable.
+              Our vision is to be one of the most visited travel platforms, enriching our users' experiences and making their discoveries unforgettable.
             </p>
           </div>
         </div>
@@ -73,6 +79,7 @@ const About = () => {
                 🌟
               </div>
               <p className="text-gray-600">Quality</p>
+              <motion.div className="text-gray-800 text-lg font-semibold pl-5">{rounded}</motion.div>
             </div>
             {/* Value 2 */}
             <div className="flex items-center bg-white p-4 shadow-md rounded-lg">
@@ -80,6 +87,7 @@ const About = () => {
                 🤝
               </div>
               <p className="text-gray-600">Trust</p>
+              <motion.div className="text-gray-800 text-lg font-semibold pl-5">{rounded2}</motion.div>
             </div>
             {/* Value 3 */}
             <div className="flex items-center bg-white p-4 shadow-md rounded-lg">
@@ -87,6 +95,7 @@ const About = () => {
                 🌍
               </div>
               <p className="text-gray-600">Diversity</p>
+              <motion.div className="text-gray-800 text-lg font-semibold pl-5">{rounded3}</motion.div>
             </div>
           </div>
         </div>

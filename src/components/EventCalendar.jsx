@@ -25,6 +25,11 @@ const EventCalendar = () => {
     setModalOpen(false);
     setSelectedEvent(null);
   };
+  const deleteModal = () => {
+    setModalOpen(false);
+    setEvents(events.filter(event => event !== selectedEvent));
+    setSelectedEvent(null);
+  };
 
   return (
     <div className="flex">
@@ -42,7 +47,7 @@ const EventCalendar = () => {
         <h2 className="text-xl font-bold mb-4">Etkinlik Ekle</h2>
         <EventForm onAddEvent={addEvent} />
       </div>
-      {modalOpen && <EventModal event={selectedEvent} onClose={closeModal} />}
+      {modalOpen && <EventModal event={selectedEvent} onClose={closeModal} onDelete={deleteModal} />}
     </div>
   );
 };

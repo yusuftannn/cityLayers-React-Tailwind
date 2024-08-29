@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHeart, FaRegTrashAlt     } from 'react-icons/fa';
+import { FaHeart, FaRegTrashAlt } from 'react-icons/fa';
 import { useFavorites } from '../context/FavoritesContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,10 +40,10 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/favorites" className="text-gray-300 hover:text-white">
-          Favorite Events
+            Favorite Events
           </Link>
           <Link to="/eventform" className="text-gray-300 hover:text-white">
-          Create Event
+            Create Event
           </Link>
           <div className="relative z-50" ref={dropdownRef}>
             <button
@@ -52,41 +53,58 @@ const Navbar = () => {
               <FaHeart className="h-3 w-3" />
               <span className="ml-2"> ({favorites.length})</span>
             </button>
-            {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-50">
-                {favorites.length === 0 ? (
-                  <p className="px-4 py-2 text-sm text-gray-500">Favorites Empty</p>
-                ) : (
-                  <ul>
-                    {favorites.map((city) => (
-                      <li key={city.id} className="px-4 py-2 border-b flex justify-between items-center">
-                        <span className="text-sm">{city.name}</span>
-                        <button
-                          onClick={() => removeFromFavorites(city.id)}
-                          className="text-red-600 text-sm"
-                        >
-                          <FaRegTrashAlt className="h-3 w-4"  />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <div className="px-4 py-2 flex justify-between space-x-2">
-                  <Link
-                    to="/favorites"
-                    className="text-blue-500 hover:text-blue-700 text-sm"
-                  >
-                    View Favorites
-                  </Link>
-                  <button
-                    onClick={clearFavorites}
-                    className="text-red-600 hover:text-red-800 text-sm"
-                  >
-                    Remove All
-                  </button>
-                </div>
-              </div>
-            )}
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-50"
+                >
+                  {favorites.length === 0 ? (
+                    <p className="px-4 py-2 text-sm text-gray-500">Favorites Empty</p>
+                  ) : (
+                    <ul>
+                      <AnimatePresence>
+                        {favorites.map((city) => (
+                          <motion.li
+                            key={city.id}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 10 }}
+                            transition={{ duration: 0.2 }}
+                            className="px-4 py-2 border-b flex justify-between items-center"
+                          >
+                            <span className="text-sm">{city.name}</span>
+                            <button
+                              onClick={() => removeFromFavorites(city.id)}
+                              className="text-red-600 text-sm"
+                            >
+                              <FaRegTrashAlt className="h-3 w-4" />
+                            </button>
+                          </motion.li>
+                        ))}
+                      </AnimatePresence>
+                    </ul>
+                  )}
+                  <div className="px-4 py-2 flex justify-between space-x-2">
+                    <Link
+                      to="/favorites"
+                      className="text-blue-500 hover:text-blue-700 text-sm"
+                    >
+                      View Favorites
+                    </Link>
+                    <button
+                      onClick={clearFavorites}
+                      className="text-red-600 hover:text-red-800 text-sm"
+                    >
+                      Remove All
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
         <div className="md:hidden">
@@ -112,21 +130,29 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="container mx-auto flex flex-col space-y-2 mt-4">
-            <Link to="/" className="text-gray-300 hover:text-white">
-              Home
-            </Link>
-            <Link to="/favorites" className="text-gray-300 hover:text-white">
-            Favorite Events
-            </Link>
-            <Link to="/eventform" className="text-gray-300 hover:text-white">
-              Create Event
-            </Link>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden"
+          >
+            <div className="container mx-auto flex flex-col space-y-2 mt-4">
+              <Link to="/" className="text-gray-300 hover:text-white">
+                Home
+              </Link>
+              <Link to="/favorites" className="text-gray-300 hover:text-white">
+                Favorite Events
+              </Link>
+              <Link to="/eventform" className="text-gray-300 hover:text-white">
+                Create Event
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import EventDetail from './pages/EventDetail';
-import CreateEvent from './pages/CreateEvent';
+
 import Favorites from './pages/Favorites';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -22,8 +21,6 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/event/:id" element={<EventDetail />} />
-            <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/about-us" element={<About />} />
             <Route path="/contact" element={<Contact />} />
